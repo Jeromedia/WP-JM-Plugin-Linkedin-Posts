@@ -1,13 +1,128 @@
+<?php
+
+if (isset($_POST['jm_li_save_settings'])) {
+    jm_li_save_custom_settings($_POST);
+    echo '<div class="updated"><p>Settings saved.</p></div>';
+}
+if (isset($_POST['jm_li_save_settings_cache'])) {
+    jm_li_save_custom_settings_cache($_POST);
+    echo '<div class="updated"><p>Cache saved.</p></div>';
+}
+if (isset($_POST['jm_li_clear_cache']) && $_POST['jm_li_clear_cache'] == 1) {
+    jm_li_cache_clear_all();
+    echo '<div class="updated"><p>Cache cleared successfully.</p></div>';
+}
+
+$column_limit = jm_li_get_custom_setting('jm_li_settings_column_limit');
+$post_limit = jm_li_get_custom_setting('jm_li_settings_post_limit');
+$testing_mode = jm_li_get_custom_setting('jm_li_settings_testing_mode');
+$cache_timeout = jm_li_get_custom_setting('jm_li_settings_cache_timeout');
+
+$company_name = jm_li_get_custom_setting('jm_li_settings_company_name');
+$api_token = jm_li_get_custom_setting('jm_li_settings_api_token');
+$api_base_url = jm_li_get_custom_setting('jm_li_settings_api_base_url');
+?>
+
 <div id="jm-li-settings" class="wrap">
     <h1>JM LinkedIn Posts - Settings</h1>
     <p>Welcome to the Settings of JM LinkedIn Posts.</p>
-    <div>
-    <form method="post" action="options.php">
-            <?php
-            settings_fields('jm_li_settings_group');
-            do_settings_sections('jm_li_settings');
-            submit_button();
-            ?>
-        </form>
+
+    <form method="post">
+        <h2>Company Details</h2>
+        <div class="jmli-settings-section">
+            <div>
+                <table class="form-table">
+                    <tr>
+                        <th scope="row"><label for="jm_li_settings_company_name">Company Name (lowercase)</label></th>
+                        <td><input type="text" name="jm_li_settings_company_name"
+                                value="<?php echo esc_attr($company_name); ?>" /></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="jm_li_settings_api_token">API Token</label></th>
+                        <td><input type="text" name="jm_li_settings_api_token"
+                                value="<?php echo esc_attr($api_token); ?>" /></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="jm_li_settings_api_base_url">API Base URL</label></th>
+                        <td>
+                            <?php
+                            if (jm_li_get_testing_mode()) { ?>
+                                <input type="url" name="jm_li_settings_api_base_url"
+                                    value="<?php echo esc_attr($api_base_url); ?>" />
+                            </td>
+                        </tr>
+
+                    <?php } else { ?>
+                        <div class="jmli-fake-input">
+                            <?php echo esc_attr($api_base_url); ?></td>
+                        </div>
+                        <input type="hidden" name="jm_li_settings_api_base_url"
+                            value="<?php echo esc_attr($api_base_url); ?>">
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+            <div>
+
+            </div>
+        </div>
+
+        <h2>Display</h2>
+        <div class="jmli-settings-section">
+            <div>
+                <table class="form-table">
+                    <tr>
+                        <th scope="row"><label for="jm_li_settings_column_limit">Number of Columns (max: 5)</label></th>
+                        <td><input type="text" name="jm_li_settings_column_limit"
+                                value="<?php echo esc_attr($column_limit); ?>"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="jm_li_settings_post_limit">Number of Posts (max: 10)</label></th>
+                        <td><input type="number" name="jm_li_settings_post_limit"
+                                value="<?php echo esc_attr($post_limit); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="jm_li_settings_testing_mode">Testing Mode</label></th>
+                        <td><input type="checkbox" name="jm_li_settings_testing_mode" value="yes" <?php checked($testing_mode, 'yes'); ?>></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>
+                            <div style="display: flex; justify-content: end;">
+                                <?php submit_button('Save Settings', 'primary', 'jm_li_save_settings'); ?>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+    <h2>Cache</h2>
+    <div class="jmli-settings-section">
+        <div>
+            <form method="post">
+                <table class="form-table">
+                    <tr>
+                        <th scope="row"><label for="jm_li_settings_cache_timeout">Cache Timeout (in sec)</label></th>
+                        <td><input type="text" name="jm_li_settings_cache_timeout"
+                                value="<?php echo esc_attr($cache_timeout); ?>"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>
+                            <div style="display: flex; justify-content: end;">
+                                <?php submit_button('Save Cache', 'primary', 'jm_li_save_settings_cache'); ?>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <form method="post" action="">
+                <input type="hidden" name="jm_li_clear_cache" value="1">
+                <?php submit_button('Clear Cache', 'secondary', 'clear_cache_button'); ?>
+            </form>
+        </div>
+
     </div>
 </div>
