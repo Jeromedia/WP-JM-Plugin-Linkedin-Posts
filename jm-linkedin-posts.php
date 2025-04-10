@@ -3,7 +3,7 @@
 Plugin Name: Jeromedia: LinkedIn Posts
 Plugin URI: https://jeromedia.com/wp/plugins/jm-linkedin-posts
 Description: Retrieves posts from an external API and displays them via shortcode.
-Version: 1.0
+Version: 1.2
 Author: Jeromedia
 Author URI: https://jeromedia.com
 License: GPL2

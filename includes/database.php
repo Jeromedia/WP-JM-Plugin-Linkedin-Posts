@@ -32,7 +32,7 @@ function jm_li_create_table()
     // Insert default testing company name
     $default_settings = [
         'jm_li_settings_testing_company_name' => 'jeromedia',
-        'jm_li_settings_api_base_url' => 'http://jeromedia-api.test/linkedin',
+        'jm_li_settings_api_base_url' => 'https://api.jeromedia.com/linkedin',
         'jm_li_settings_company_name' => '',
         'jm_li_settings_api_token' => '',
         'jm_li_settings_column_limit' => '3',
