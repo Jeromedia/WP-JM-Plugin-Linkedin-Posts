@@ -64,3 +64,61 @@ function jm_linkedin_plugin_setup() {
 // }
 // add_action('admin_enqueue_scripts', 'jm_linkedin_enqueue_styles_scripts');
 
+
+
+
+
+// GitHub Update Check Functionality - Add this below your plugin code
+
+// Define the plugin's GitHub repository (use your own repo details)
+define( 'YOUR_PLUGIN_GITHUB_API_URL', 'https://api.github.com/repos/Jeromedia/WP-JM-Plugin-Linkedin-Posts/releases/latest' );
+
+// Hook to check for updates
+add_filter( 'site_transient_update_plugins', 'your_plugin_update_check' );
+
+function your_plugin_update_check( $transient ) {
+    // Don't check if WordPress is updating
+    if ( empty( $transient->checked ) ) {
+        return $transient;
+    }
+
+    // Get the current version of the plugin
+    $plugin_slug = 'jm-linkedin-posts/jm-linkedin-posts.php'; // Change this to your plugin's main file
+    $current_version = isset( $transient->checked[$plugin_slug] ) ? $transient->checked[$plugin_slug] : '';
+
+    // Fetch the latest release information from GitHub
+    $response = wp_remote_get( YOUR_PLUGIN_GITHUB_API_URL );
+
+    if ( is_wp_error( $response ) ) {
+        return $transient;
+    }
+
+    $release_data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+    // If a new version is available on GitHub
+    if ( version_compare( $release_data['tag_name'], $current_version, '>' ) ) {
+        // Add the update information
+        $update_data = array(
+            'slug' => 'jm-linkedin-posts',
+            'plugin' => $plugin_slug,
+            'new_version' => $release_data['tag_name'],
+            'url' => $release_data['html_url'],
+            'package' => $release_data['zipball_url'] // URL to the plugin's zip package
+        );
+
+        // Add the update to the transient response
+        $transient->response[$plugin_slug] = $update_data;
+    }
+
+    return $transient;
+}
+
+// Optional: Add post-install actions after updating the plugin
+add_filter( 'upgrader_post_install', 'your_plugin_update_installer', 10, 2 );
+
+function your_plugin_update_installer( $response, $hook_extra ) {
+    if ( 'your-plugin-slug' === $hook_extra['plugin'] ) {
+        // Perform custom actions after the plugin is installed (e.g., clean up, reconfigure)
+    }
+    return $response;
+}
