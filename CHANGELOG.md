@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.6] - 2025-04-10
+
+### Added
+
+- GitHub token for authorization in update check and update logo class in shortcode output
+
 ## [v1.5] - 2025-04-10
 
 ### Added

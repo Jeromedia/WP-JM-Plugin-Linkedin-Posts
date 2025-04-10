@@ -15,7 +15,7 @@
                         ?>
                         <a class="jmli-post-card" target="_blank" href="<?php echo $post['postUrl'] ?? "#"; ?>">
                             <div class="jmli-post-card-header">
-                                <div class="logo"><img height="48" src="<?php echo $logo; ?>" alt="Logo">
+                                <div class="jmli-logo"><img width="48px" src="<?php echo $logo; ?>" alt="Logo">
                                 </div>
                                 <div class="company">
                                     <div class="companyName"><?php echo ucfirst(esc_html($companyName)); ?></div>

@@ -87,7 +87,14 @@ function your_plugin_update_check( $transient ) {
     $current_version = isset( $transient->checked[$plugin_slug] ) ? $transient->checked[$plugin_slug] : '';
 
     // Fetch the latest release information from GitHub
-    $response = wp_remote_get( YOUR_PLUGIN_GITHUB_API_URL );
+    // $response = wp_remote_get( YOUR_PLUGIN_GITHUB_API_URL );
+    $response = wp_remote_get( YOUR_PLUGIN_GITHUB_API_URL, array(
+        'headers' => array(
+            'Authorization' => 'token ' . GITHUB_TOKEN,
+            'User-Agent'    => 'WordPress/' . get_bloginfo( 'version' ),
+        )
+    ) );
+    
 
     if ( is_wp_error( $response ) ) {
         return $transient;
