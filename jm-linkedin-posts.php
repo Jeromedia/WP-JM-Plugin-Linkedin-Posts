@@ -113,12 +113,23 @@ function your_plugin_update_check( $transient ) {
     return $transient;
 }
 
-// Optional: Add post-install actions after updating the plugin
-add_filter( 'upgrader_post_install', 'your_plugin_update_installer', 10, 2 );
+// Fix plugin folder name after GitHub update install
+add_filter( 'upgrader_post_install', 'jm_plugin_post_install', 10, 2 );
 
-function your_plugin_update_installer( $response, $hook_extra ) {
-    if ( 'your-plugin-slug' === $hook_extra['plugin'] ) {
-        // Perform custom actions after the plugin is installed (e.g., clean up, reconfigure)
+function jm_plugin_post_install( $response, $hook_extra ) {
+    $plugin_slug = 'jm-linkedin-posts/jm-linkedin-posts.php';
+    global $wp_filesystem;
+
+    $correct_path = WP_PLUGIN_DIR . '/jm-linkedin-posts/';
+
+    if (
+        isset($hook_extra['plugin']) &&
+        $hook_extra['plugin'] === $plugin_slug &&
+        $response['destination'] !== $correct_path
+    ) {
+        $wp_filesystem->move( $response['destination'], $correct_path );
+        $response['destination'] = $correct_path;
     }
+
     return $response;
 }
