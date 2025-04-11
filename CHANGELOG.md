@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- getPposts() url
+- getPosts() url
 
 ## [v1.8] - 2025-04-11
 
