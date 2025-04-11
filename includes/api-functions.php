@@ -24,7 +24,7 @@ function jm_li_fetch_connection()
 
     $body = wp_remote_retrieve_body($response);
     // echo $body ."<br>";
-    $data = json_decode($body);
+    $data = json_decode($body, true);
 
     // Ensure that the response is a valid object
     if (is_null($data)) {
@@ -107,7 +107,7 @@ function jm_li_fetch_followers()
     }
 
     $body = wp_remote_retrieve_body($response);
-    $data = json_decode($body);
+    $data = json_decode($body, true);
 
     return $data;
 }
@@ -145,7 +145,7 @@ function jm_li_fetch_posts()
     }
 
     $body = wp_remote_retrieve_body($response);
-    $data = json_decode($body);
+    $data = json_decode($body, true);
 
     return $data;
 }
