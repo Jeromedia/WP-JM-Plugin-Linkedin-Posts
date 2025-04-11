@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.8] - 2025-04-11
+
+### Added
+
+- Refactor post fetching logic and update shortcode template structure
+
 ## [v1.7] - 2025-04-10
 
 ### Added
