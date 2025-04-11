@@ -4,13 +4,13 @@
             <?php
             if (!empty($posts)) {
                 foreach ($posts as $post) {
-                    $timestamp_ms = $post['publishedAt'];
+                    // $timestamp_ms = $post['publishedAt'];
                     // Convert milliseconds to seconds
-                    $timestamp = $timestamp_ms / 1000;
+                    // $timestamp = $timestamp_ms / 1000;
                     // Get current time
-                    $current_time = current_time('timestamp');
+                    // $current_time = current_time('timestamp');
                     // Get human-readable difference
-                    $diff = human_time_diff($timestamp, $current_time);
+                    // $diff = human_time_diff($timestamp, $current_time);
                     if ($post['lifecycleState'] == "PUBLISHED" && $post['visibility'] == "PUBLIC") {
                         ?>
                         <a class="jmli-post-card" target="_blank" href="<?php echo $post['postUrl'] ?? "#"; ?>">
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="postDate">
                                         <span>
-                                            <?php echo esc_html($diff); ?> •
+                                            <?php //echo esc_html($diff); ?> •
                                         </span>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16"
                                             fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
