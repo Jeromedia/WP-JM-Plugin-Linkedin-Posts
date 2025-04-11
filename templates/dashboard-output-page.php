@@ -5,7 +5,7 @@
         <br>
         base_url: <?php echo jm_li_get_api_base_url(); ?><br>
         company: <?php echo jm_li_get_active_company_name(); ?><br>
-        url: <?php echo "$base_url/posts/$company"; ?><br>
+        url: <?php echo jm_li_get_api_base_url() ."/posts/". jm_li_get_active_company_name(); ?><br>
         </div>
 
 
