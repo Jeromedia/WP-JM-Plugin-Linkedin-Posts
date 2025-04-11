@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.9] - 2025-04-11
+
+### Fixed
+
+- getPposts() url
+
 ## [v1.8] - 2025-04-11
 
 ### Added
