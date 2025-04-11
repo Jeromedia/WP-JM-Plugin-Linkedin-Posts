@@ -133,20 +133,21 @@ function jm_li_fetch_posts()
 {
     $base_url = jm_li_get_api_base_url();
     $company = jm_li_get_active_company_name();
-    $post_limit = jm_li_get_post_limit();
-    // $url = "$base_url/posts/$company/$post_limit";
-    $url = "$base_url/posts/$company";
+    $url = "$base_url/followers/$company";
 
     $response = wp_remote_get($url);
 
     if (is_wp_error($response)) {
-        return null;
+        return (object) [
+            'http_status_code' => $response->get_error_code(),
+            'connection_message' => $response->get_error_message()
+        ];
     }
 
     $body = wp_remote_retrieve_body($response);
-    $posts = json_decode($body, true);
+    $data = json_decode($body);
 
-    return $posts;
+    return $data;
 }
 function jm_li_fetch_posts_cached()
 {

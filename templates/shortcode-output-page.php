@@ -1,4 +1,4 @@
-<div id="jmli-dashboard" class="wrap">
+<div id="jmli-shortcode" class="wrap">
     <div>
         <div class="jmli-posts">
             <?php
