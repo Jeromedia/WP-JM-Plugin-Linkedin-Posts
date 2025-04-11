@@ -133,7 +133,7 @@ function jm_li_fetch_posts()
 {
     $base_url = jm_li_get_api_base_url();
     $company = jm_li_get_active_company_name();
-    $url = "$base_url/followers/$company";
+    $url = "$base_url/posts/$company";
 
     $response = wp_remote_get($url);
 
