@@ -6,12 +6,8 @@ if (!defined('ABSPATH')) {
 function jm_li_fetch_connection_to_jeromedia()
 {
     $base_url = jm_li_get_api_base_url();
-    // echo $base_url ."<br>";
     $company = jm_li_get_active_company_name();
-    // echo $company ."<br>";
     $url = "$base_url/connection/$company";
-    // echo $url ."<br>";
-    // echo 'http://jeromedia-api.test/linkedin/connection/jeromedia';
 
     $response = wp_remote_get($url);
 
@@ -23,10 +19,8 @@ function jm_li_fetch_connection_to_jeromedia()
     }
 
     $body = wp_remote_retrieve_body($response);
-    // echo $body ."<br>";
     $data = json_decode($body, true);
 
-    // Ensure that the response is a valid object
     if (is_null($data)) {
         return (object) [
             'http_status_code' => 500,

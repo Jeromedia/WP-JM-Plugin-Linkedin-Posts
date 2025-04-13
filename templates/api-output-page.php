@@ -2,32 +2,39 @@
     <h1>JM LinkedIn Posts - API Connection</h1>
 
     <div>
-        <p>✅ Connection: <?php  echo esc_html($connection->connection_message); ?> to <?php echo esc_html($company); ?>
-            </p>
-        <?php 
+        <?php
+        if ($response->http_status_code === 200) {
+        echo '✅ ' . esc_html($response->connection_message);
+        } else {
+        echo '❌ Failed: ' . esc_html($response->connection_message);
+        }
+        ?>
+        <!-- <p>✅ Connection: <?php // echo esc_html($connection->connection_message); ?> to <?php // echo esc_html($company); ?>
+            </p> -->
+        <?php
         // if ($connection && isset($connection->http_status_code) && $connection->http_status_code === 200): 
         ?>
-            <!-- <p>✅ Connection: <?php // echo esc_html($connection->connection_message); ?> to <?php // echo esc_html($company); ?>
+        <!-- <p>✅ Connection: <?php // echo esc_html($connection->connection_message); ?> to <?php // echo esc_html($company); ?>
             </p> -->
-        <?php 
+        <?php
         // elseif ($connection && isset($connection->http_status_code)): 
         ?>
-            <!-- <p>⚠️ Not connected to <?php // echo esc_html($company); ?></p>
+        <!-- <p>⚠️ Not connected to <?php // echo esc_html($company); ?></p>
             <p><strong>Reason:</strong> <?php // echo esc_html($connection->reason ?? 'Unknown'); ?></p> -->
-        <?php 
+        <?php
         // else: 
         ?>
-            <!-- <p>⚠️ Could not fetch connection data.</p> -->
-        <?php 
+        <!-- <p>⚠️ Could not fetch connection data.</p> -->
+        <?php
         // endif; 
         ?>
 
-        <?php 
+        <?php
         // if ($connection && isset($connection->http_status_code) && $connection->http_status_code !== 200 && $connection->http_status_code !== 403): 
         ?>
-            <!-- <h2>Reconnection Needed?</h2>
+        <!-- <h2>Reconnection Needed?</h2>
             <p><a href="<?php // echo esc_url($base_url . '/linkedin/connect/jeromedia'); ?>">Reconnect now</a></p> -->
-        <?php 
+        <?php
         // endif; 
         ?>
     </div>
@@ -35,16 +42,16 @@
         <h2>Current cached and not expired</h2>
         <table>
             <tr>
-            <th>Connection</th>
-            <td>Test</td>
+                <th>Connection</th>
+                <td>Test</td>
             </tr>
             <tr>
-            <th>Logo</th>
-            <td>Test</td>
+                <th>Logo</th>
+                <td>Test</td>
             </tr>
             <tr>
-            <th>Posts</th>
-            <td>Test</td>
+                <th>Posts</th>
+                <td>Test</td>
             </tr>
         </table>
     </div>
