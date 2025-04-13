@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-function jm_li_fetch_connection()
+function jm_li_fetch_connection_to_jeromedia()
 {
     $base_url = jm_li_get_api_base_url();
     // echo $base_url ."<br>";
