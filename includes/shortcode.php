@@ -3,9 +3,7 @@
 function jm_linkedin_dashboard_shortcode()
 {
     $cols = jm_li_get_columns_limit();
-    $posts = jm_li_fetch_posts();
-    // $logo = jm_li_fetch_logo();
-    // $followers = jm_li_fetch_followers();
+    $data = jm_li_fetch_posts();
     $companyName = jm_li_get_active_company_name();
     $page = 'shortcode';
 

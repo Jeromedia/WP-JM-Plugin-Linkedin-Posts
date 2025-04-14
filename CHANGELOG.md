@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.12] - 2025-04-14
+
+### Fixed
+
+- refactor posts
+
 ## [v1.11] - 2025-04-14
 
 ### Fixed
