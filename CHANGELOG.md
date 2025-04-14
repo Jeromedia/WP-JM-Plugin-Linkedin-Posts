@@ -1,5 +1,15 @@
 # Changelog
 
+## [v1.13] - 2025-04-14
+
+### Fixed
+
+- Add main CSS file and update dashboard and shortcode templates
+- Introduced a new CSS file for styling the LinkedIn posts dashboard.
+- Updated the dashboard output page to include a preview section.
+- Modified the shortcode output to limit the number of displayed posts and added a "See All Posts" button.
+- Adjusted the main layout to correctly reference the new CSS file.
+
 ## [v1.12] - 2025-04-14
 
 ### Fixed
