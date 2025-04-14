@@ -2,8 +2,11 @@
     <div>
         <div class="jmli-posts">
             <?php
-            if (!empty($posts)) {
-                foreach ($posts as $post) {
+            $logo = $data['meta']['logo'] ?? null;
+            $followers = $data['meta']['followers'] ?? null;
+
+            if (!empty($data['posts'])) {
+                foreach ($data['posts'] as $post) {
                     $timestamp_ms = $post['publishedAt'];
                     // Convert milliseconds to seconds
                     $timestamp = $timestamp_ms / 1000;
@@ -15,11 +18,12 @@
                         ?>
                         <a class="jmli-post-card" target="_blank" href="<?php echo $post['postUrl'] ?? "#"; ?>">
                             <div class="jmli-post-card-header">
-                                <div class="jmli-logo"><img width="48px" src="<?php echo $logo->connection_message; ?>" alt="Logo">
+                                <div class="jmli-logo"><img width="48px" src="<?php echo $logo; ?>"
+                                        alt="Logo">
                                 </div>
                                 <div class="company">
                                     <div class="companyName"><?php echo ucfirst($companyName); ?></div>
-                                    <div class="companyFollowers"><?php echo $followers->connection_message; ?> followers
+                                    <div class="companyFollowers"><?php echo $followers; ?> followers
                                     </div>
                                     <div class="postDate">
                                         <span>
@@ -48,13 +52,13 @@
                                         <img src="<?php echo $post['content']['media']['imageUrl']; ?>" alt="image">
                                     </div>
                                 <?php } ?>
-                                <?php if(isset($post['content']['article'])){ ?>
+                                <?php if (isset($post['content']['article'])) { ?>
                                     <div class="article">
                                         <div class="thumbnail"><img src="" alt=""></div>
                                         <div class="title"><?php echo $post['content']['article']['title']; ?></div>
                                     </div>
 
-                               <?php } ?>
+                                <?php } ?>
                             </div>
                         </a>
                         <?php

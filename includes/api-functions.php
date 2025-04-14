@@ -166,7 +166,7 @@ function jm_li_fetch_posts()
 {
     $base_url = jm_li_get_api_base_url();
     $company = jm_li_get_active_company_name();
-    $url = "$base_url/posts/$company";
+    $url = "$base_url/posts-from-cache/$company";
 
     $response = wp_remote_get($url);
 
