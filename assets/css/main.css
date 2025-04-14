@@ -1,14 +1,17 @@
 <style>
-    .jmli-main-layout{
+    #jmli-shortcode{
+        font-size: 14px;
+    }
+    #jmli-shortcode .jmli-main-layout{
         padding: 1rem;
     }
-    .testing-mode-active{
+    #jmli-shortcode .testing-mode-active{
         color:red;
         border: 1px solid red;
         background: rgba(255, 0, 0, 0.025);
         padding: 4px 8px;
     }
-    .jmli-posts {
+    #jmli-shortcode .jmli-posts {
         display: grid;
         grid-template-columns: repeat(<?php echo $cols ?>, 1fr);
         gap: 10px;
@@ -16,59 +19,59 @@
         padding: 0;
     }
 
-    .jmli-post-card {
+    #jmli-shortcode .jmli-post-card {
         border: 1px solid #ccc;
         border-radius: 0.5rem;
         padding: 0.5rem;
         background-color: white;
         flex: 0 0 auto;
     }
-    a.jmli-post-card{
+    #jmli-shortcode a.jmli-post-card{
         text-decoration: none;
         color:#1d2327;
     }
-    .jmli-post-card .media img{
+    #jmli-shortcode .jmli-post-card .media img{
         max-width: 100%;
         height: auto;
         display: block; /* removes whitespace under the image */
         object-fit: contain; /* optional: keep aspect ratio inside container */
     } 
-    .jmli-post-card .article{
+    #jmli-shortcode .jmli-post-card .article{
         display: flex;
         padding: 4px 8px;
         border: 1px solid #333333;
         border-radius: 4px;
     }
-    .jmli-post-card .article .title{
+    #jmli-shortcode .jmli-post-card .article .title{
         font-weight: bold;
     }
     
-    .jmli-post-card-header {
+    #jmli-shortcode .jmli-post-card-header {
         display: flex;
         align-items: center;
         padding: 1rem;
     }
-    .jmli-post-card-header .logo{
+    #jmli-shortcode .jmli-post-card-header .logo{
 
     }
-    .jmli-post-card-header .company{
+    #jmli-shortcode .jmli-post-card-header .company{
         margin-left:0.5rem;
     }
-    .jmli-post-card-header .company .companyName{
+    #jmli-shortcode .jmli-post-card-header .company .companyName{
         font-weight:bold;
     }
-    .jmli-post-card-header .company .companyFollowers{
+    #jmli-shortcode .jmli-post-card-header .company .companyFollowers{
         /* font-weight:bold; */
         color:rgb(0 0 0 / 60%);
     }
-    .jmli-post-card-header .company .postDate{
+    #jmli-shortcode .jmli-post-card-header .company .postDate{
         color: rgb(0 0 0 / 60%);
         display: flex;
         align-items: center;
         gap: 4px;
     }
 
-    .jmli-post-card-body {
+    #jmli-shortcode .jmli-post-card-body {
         padding: 0.5rem 1rem;
         display: block;
         max-height: 3rem;
@@ -76,35 +79,33 @@
         position: relative;
     }
 
-    .jmli-post-card-footer {
+    #jmli-shortcode .jmli-post-card-footer {
         margin-top: 1rem;
     }
 
-    .jmli-settings-section {
+    #jmli-shortcode .jmli-settings-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         list-style: none;
         padding: 0;
     }
-    .jmli-settings-section table tr td{
+    #jmli-shortcode .jmli-settings-section table tr td{
         width:50%;
     }
-    .jmli-settings-section table tr td input[type="text"], 
-    .jmli-settings-section table tr td input[type="number"],
-    .jmli-settings-section table tr td input[type="url"]{
+    #jmli-shortcode .jmli-settings-section table tr td input[type="text"], 
+    #jmli-shortcode .jmli-settings-section table tr td input[type="number"],
+    #jmli-shortcode .jmli-settings-section table tr td input[type="url"]{
         width:100%;
     }
-    .jmli-fake-input{
+    #jmli-shortcode .jmli-fake-input{
         border-radius: 4px;
-        border: 1px solid rgba(220, 220, 222, .75);
+        border: 1px solid rgba(220, 220, 222, 0.75);
         padding: 0 8px;
         line-height: 2;
         min-height: 30px;
-        background: rgba(255, 255, 255, .5);
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .04);
-        color: rgba(44, 51, 56, .5);
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+        color: rgba(44, 51, 56, 0.5);
     }
-
-
 </style>
