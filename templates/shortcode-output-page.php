@@ -15,11 +15,11 @@
                         ?>
                         <a class="jmli-post-card" target="_blank" href="<?php echo $post['postUrl'] ?? "#"; ?>">
                             <div class="jmli-post-card-header">
-                                <div class="jmli-logo"><img width="48px" src="<?php echo $logo; ?>" alt="Logo">
+                                <div class="jmli-logo"><img width="48px" src="<?php echo $logo->connection_message; ?>" alt="Logo">
                                 </div>
                                 <div class="company">
-                                    <div class="companyName"><?php echo ucfirst(esc_html($companyName)); ?></div>
-                                    <div class="companyFollowers"><?php echo esc_html($followers->firstDegreeSize); ?> followers
+                                    <div class="companyName"><?php echo ucfirst($companyName); ?></div>
+                                    <div class="companyFollowers"><?php echo $followers->connection_message; ?> followers
                                     </div>
                                     <div class="postDate">
                                         <span>

@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.10] - 2025-04-13
+
+### Fixed
+
+- posts, followers, logo
+
 ## [v1.9] - 2025-04-11
 
 ### Fixed

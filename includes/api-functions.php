@@ -19,7 +19,34 @@ function jm_li_fetch_connection_to_jeromedia()
     }
 
     $body = wp_remote_retrieve_body($response);
-    $data = json_decode($body, true);
+    $data = json_decode($body);
+
+    if (is_null($data)) {
+        return (object) [
+            'http_status_code' => 500,
+            'connection_message' => 'Invalid data format from API'
+        ];
+    }
+
+    return $data;
+}
+function jm_li_fetch_connection_posts_check_to_jeromedia()
+{
+    $base_url = jm_li_get_api_base_url();
+    $company = jm_li_get_active_company_name();
+    $url = "$base_url/connection/posts/$company";
+
+    $response = wp_remote_get($url);
+
+    if (is_wp_error($response)) {
+        return (object) [
+            'http_status_code' => $response->get_error_code(),
+            'connection_message' => $response->get_error_message()
+        ];
+    }
+
+    $body = wp_remote_retrieve_body($response);
+    $data = json_decode($body);
 
     if (is_null($data)) {
         return (object) [
@@ -52,7 +79,6 @@ function jm_li_fetch_logo()
     $base_url = jm_li_get_api_base_url();
     $company = jm_li_get_active_company_name();
     $url = "$base_url/logo/$company";
-
     $response = wp_remote_get($url);
 
     if (is_wp_error($response)) {
@@ -63,10 +89,16 @@ function jm_li_fetch_logo()
     }
 
     $body = wp_remote_retrieve_body($response);
-    // $data = json_decode($body);
+    $data = json_decode($body);
 
-    // return $data;
-    return $body;
+    if (is_null($data)) {
+        return (object) [
+            'http_status_code' => 500,
+            'connection_message' => 'Invalid data format from API'
+        ];
+    }
+
+    return $data;
 }
 
 function jm_li_fetch_logo_cached()
@@ -101,7 +133,14 @@ function jm_li_fetch_followers()
     }
 
     $body = wp_remote_retrieve_body($response);
-    $data = json_decode($body, true);
+    $data = json_decode($body);
+
+    if (is_null($data)) {
+        return (object) [
+            'http_status_code' => 500,
+            'connection_message' => 'Invalid data format from API'
+        ];
+    }
 
     return $data;
 }

@@ -1,45 +1,39 @@
 <div id="jm-li-dashboard" class="wrap">
     <h1>JM LinkedIn Posts - API Connection</h1>
-
-    <div>
-        <?php
-        if ($response->http_status_code === 200) {
-        echo '✅ ' . esc_html($response->connection_message);
-        } else {
-        echo '❌ Failed: ' . esc_html($response->connection_message);
-        }
-        ?>
-        <!-- <p>✅ Connection: <?php // echo esc_html($connection->connection_message); ?> to <?php // echo esc_html($company); ?>
-            </p> -->
-        <?php
-        // if ($connection && isset($connection->http_status_code) && $connection->http_status_code === 200): 
-        ?>
-        <!-- <p>✅ Connection: <?php // echo esc_html($connection->connection_message); ?> to <?php // echo esc_html($company); ?>
-            </p> -->
-        <?php
-        // elseif ($connection && isset($connection->http_status_code)): 
-        ?>
-        <!-- <p>⚠️ Not connected to <?php // echo esc_html($company); ?></p>
-            <p><strong>Reason:</strong> <?php // echo esc_html($connection->reason ?? 'Unknown'); ?></p> -->
-        <?php
-        // else: 
-        ?>
-        <!-- <p>⚠️ Could not fetch connection data.</p> -->
-        <?php
-        // endif; 
-        ?>
-
-        <?php
-        // if ($connection && isset($connection->http_status_code) && $connection->http_status_code !== 200 && $connection->http_status_code !== 403): 
-        ?>
-        <!-- <h2>Reconnection Needed?</h2>
-            <p><a href="<?php // echo esc_url($base_url . '/linkedin/connect/jeromedia'); ?>">Reconnect now</a></p> -->
-        <?php
-        // endif; 
-        ?>
+    <?php //echo $connection->connection_message ?>
+    <?php //echo $connection_posts->connection_message ?>
+    <div style="display: flex; 
+flex-direction: column; ">
+        <div>
+            <?php
+            if ($connection->http_status_code === 200) {
+                echo 'Connection to Jeromedia: ✅';
+            } else {
+                echo 'Connection to Jeromedia: ❌';
+            }
+            ?>
+        </div>
+        <div>
+            <?php
+            if ($connection_posts->http_status_code === 200) {
+                echo 'Connection to Posts: ✅';
+            } else {
+                echo 'Connection to Posts: ❌';
+            }
+            ?>
+        </div>
+        <div>
+            <?php
+            if ($connection_logo->http_status_code === 200) {
+                echo 'Connection to Logo: ✅';
+            } else {
+                echo 'Connection to Logo: ❌';
+            }
+            ?>
+        </div>
     </div>
     <div>
-        <h2>Current cached and not expired</h2>
+        <!-- <h2>Current cached and not expired</h2>
         <table>
             <tr>
                 <th>Connection</th>
@@ -53,6 +47,6 @@
                 <th>Posts</th>
                 <td>Test</td>
             </tr>
-        </table>
+        </table> -->
     </div>
 </div>
