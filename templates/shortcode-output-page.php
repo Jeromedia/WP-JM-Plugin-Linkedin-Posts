@@ -5,8 +5,10 @@
             $logo = $data['meta']['logo'] ?? null;
             $followers = $data['meta']['followers'] ?? null;
 
+            $limitedPosts = array_slice($data['posts'], 0, $set_posts_limit);
+
             if (!empty($data['posts'])) {
-                foreach ($data['posts'] as $post) {
+                foreach ($limitedPosts as $post) {
                     $timestamp_ms = $post['publishedAt'];
                     // Convert milliseconds to seconds
                     $timestamp = $timestamp_ms / 1000;
@@ -39,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="jmli-post-card-body">
-                                <div>
+                                <div class="jmli-post-card-body-text">
                                     <?php
                                     $commentary = esc_html($post['commentary']);
                                     echo mb_strimwidth($commentary, 0, 150, '&nbsp;&nbsp;&nbsp;<span style="color:#9b9b9b">...more</span>');
@@ -69,6 +71,11 @@
             } else {
                 echo "No posts available.";
             } ?>
+        </div>
+        <div class="jmli-see-all-posts">
+            <a target="_blank" href="https://www.linkedin.com/company/sahara-natural-resources" class="jmli-see-all-posts-button">
+                See All Posts
+            </a>
         </div>
     </div>
 </div>

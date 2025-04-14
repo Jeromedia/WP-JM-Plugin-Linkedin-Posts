@@ -1,6 +1,5 @@
-<?php require_once JM_LI_PLUGIN_PATH . 'assets/css/main.css';
+<?php require_once JM_LI_PLUGIN_PATH . 'assets/css/jm-main.css';
 ?>
-<!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 <div class="jmli-main-layout">
     <?php if (jm_li_get_testing_mode() === true): ?>
         <div class="testing-mode-active">
