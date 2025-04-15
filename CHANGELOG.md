@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.16] - 2025-04-15
+
+### Fixed
+
+- Response handling to use array syntax and remove unused functions
+
 ## [v1.15] - 2025-04-15
 
 ### Added
