@@ -9,33 +9,6 @@ function jm_li_fetch_connection_to_jeromedia()
     $company = jm_li_get_active_company_name();
     $url = "$base_url/connection/$company";
 
-    $response = wp_remote_get($url);
-
-    if (is_wp_error($response)) {
-        return (object) [
-            'http_status_code' => $response->get_error_code(),
-            'connection_message' => $response->get_error_message()
-        ];
-    }
-
-    $body = wp_remote_retrieve_body($response);
-    $data = json_decode($body);
-
-    if (is_null($data)) {
-        return (object) [
-            'http_status_code' => 500,
-            'connection_message' => 'Invalid data format from API'
-        ];
-    }
-
-    return $data;
-}
-function jm_li_fetch_connection_posts_check_to_jeromedia()
-{
-    $base_url = jm_li_get_api_base_url();
-    $company = jm_li_get_active_company_name();
-    $url = "$base_url/connection/posts/$company";
-
     $token = jm_li_get_custom_setting('jm_li_settings_api_token');
 
     $args = [
@@ -58,6 +31,34 @@ function jm_li_fetch_connection_posts_check_to_jeromedia()
 
     return $data;
 }
+// function jm_li_fetch_connection_posts_check_to_jeromedia()
+// {
+//     $base_url = jm_li_get_api_base_url();
+//     $company = jm_li_get_active_company_name();
+//     $url = "$base_url/connection/posts/$company";
+
+//     $token = jm_li_get_custom_setting('jm_li_settings_api_token');
+
+//     $args = [
+//         'headers' => [
+//             'Authorization' => 'Bearer ' . $token,
+//         ]
+//     ];
+
+//     $response = wp_remote_get($url, $args);
+
+//     if (is_wp_error($response)) {
+//         return (object) [
+//             'http_status_code' => $response->get_error_code(),
+//             'connection_message' => $response->get_error_message()
+//         ];
+//     }
+
+//     $body = wp_remote_retrieve_body($response);
+//     $data = json_decode($body, true);
+
+//     return $data;
+// }
 
 // function jm_li_fetch_connection_cached()
 // {

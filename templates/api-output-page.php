@@ -6,7 +6,7 @@
 flex-direction: column; ">
         <div>
             <?php
-            if ($connection->http_status_code === 200) {
+            if ($connection['http_status_code'] === 200) {
                 echo 'Connection to Jeromedia: ✅';
             } else {
                 echo 'Connection to Jeromedia: ❌';
