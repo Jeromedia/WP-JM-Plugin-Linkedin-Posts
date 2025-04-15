@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.15] - 2025-04-15
+
+### Added
+
+- Add Bearer token support for API requests and clean up unused functions
+
 ## [v1.14] - 2025-04-15
 
 ### Added
