@@ -4,10 +4,12 @@
             <?php
             $logo = $data['meta']['logo'] ?? null;
             $followers = $data['meta']['followers'] ?? null;
+            $posts = $data['posts'] ?? [];
+            // print_r($posts);
 
-            $limitedPosts = array_slice($data['posts'], 0, $set_posts_limit);
-
-            if (!empty($data['posts'])) {
+            if (!empty($posts)) {
+                $limitedPosts = array_slice($posts, 0, $set_posts_limit);
+            
                 foreach ($limitedPosts as $post) {
                     $timestamp_ms = $post['publishedAt'];
                     // Convert milliseconds to seconds

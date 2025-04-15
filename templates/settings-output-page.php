@@ -20,6 +20,9 @@ $cache_timeout = jm_li_get_custom_setting('jm_li_settings_cache_timeout');
 
 $company_name = jm_li_get_custom_setting('jm_li_settings_company_name');
 $api_token = jm_li_get_custom_setting('jm_li_settings_api_token');
+if (!empty($api_token)) {
+    $api_token = substr($api_token, 0, 7) . str_repeat('*', 10);
+}
 $api_base_url = jm_li_get_custom_setting('jm_li_settings_api_base_url');
 ?>
 

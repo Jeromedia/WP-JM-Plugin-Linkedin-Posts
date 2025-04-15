@@ -166,9 +166,18 @@ function jm_li_fetch_posts()
 {
     $base_url = jm_li_get_api_base_url();
     $company = jm_li_get_active_company_name();
-    $url = "$base_url/posts-from-cache/$company";
+    $url = "$base_url/posts/$company";
 
-    $response = wp_remote_get($url);
+    // Add your Bearer token here
+    $token = jm_li_get_custom_setting('jm_li_settings_api_token');
+
+    $args = [
+        'headers' => [
+            'Authorization' => 'Bearer ' . $token,
+        ]
+    ];
+
+    $response = wp_remote_get($url, $args);
 
     if (is_wp_error($response)) {
         return (object) [
@@ -181,6 +190,7 @@ function jm_li_fetch_posts()
     $data = json_decode($body, true);
 
     return $data;
+
 }
 function jm_li_fetch_posts_cached()
 {

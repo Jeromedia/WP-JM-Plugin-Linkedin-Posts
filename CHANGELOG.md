@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.14] - 2025-04-15
+
+### Added
+
+- Enhance API integration by adding Bearer token support and updating post retrieval URL.
+- Update settings to store API token and mask it in output.
+
 ## [v1.13] - 2025-04-14
 
 ### Fixed
