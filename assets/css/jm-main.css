@@ -13,10 +13,15 @@
     }
     #jmli-shortcode .jmli-posts {
         display: grid;
-        grid-template-columns: repeat(<?php echo $cols ?>, 1fr);
+        grid-template-columns: 1fr;
         gap: 10px;
         list-style: none;
         padding: 0;
+    }
+    @media screen and (min-width: 800px) {
+        #jmli-shortcode .jmli-posts {
+            grid-template-columns: repeat(<?php echo $cols ?>, 1fr);
+        }
     }
 
     #jmli-shortcode .jmli-post-card {
