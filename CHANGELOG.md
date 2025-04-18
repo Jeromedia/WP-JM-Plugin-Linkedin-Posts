@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.17] - 2025-04-18
+
+- grid css for mobile
+
 ## [v1.16] - 2025-04-15
 
 ### Fixed
