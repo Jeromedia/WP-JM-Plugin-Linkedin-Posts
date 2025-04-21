@@ -74,10 +74,10 @@
                 echo "No posts available.";
             } ?>
         </div>
-        <div class="jmli-see-all-posts">
+        <!-- <div class="jmli-see-all-posts">
             <a target="_blank" href="https://www.linkedin.com/company/sahara-natural-resources" class="jmli-see-all-posts-button">
                 See All Posts
             </a>
-        </div>
+        </div> -->
     </div>
 </div>

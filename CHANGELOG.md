@@ -1,6 +1,14 @@
 # Changelog
 
+## [v1.18] - 2025-04-21
+
+### Removed
+
+- LinkedIn posts Button
+
 ## [v1.17] - 2025-04-18
+
+### Fixed
 
 - grid css for mobile
 
